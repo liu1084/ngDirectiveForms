@@ -1,0 +1,41 @@
+<form name="form" novalidate>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input class="form-control" type="text" id="name" name="name" data-ng-model="giftData.name"
+                           maxlength="20" placeholder="Name" data-ng-required="true" data-ng-disabled="disabled"/>
+                </div>
+            </div>
+            <div class="col-lg-1">
+                <div class="form-group">
+                    <label for="amountInput">Amount</label>
+                    <input id="amountInput" name="amount"
+                           data-ng-model="giftData.amount" class="text-center form-control" type="tel"
+                           data-ng-pattern="/^(?!\.?$)\d+(\.\d{0,2})?$/" data-ng-required="true"
+                           data-ng-disabled="disabled"/>
+                </div>
+            </div>
+            <div class="col-lg-1">
+                <div class="form-group">
+                    <label>Actions</label>
+                    <button class="btn btn-info" ng-click="disabled=false;" ng-show="disabled">Edit</button>
+                    <button class="btn btn-success" ng-click="saveForm()" ng-show="!disabled">Save</button>
+                </div>
+            </div>
+        </div>
+        <div class="row" data-ng-show="form.$submitted">
+            <div class="col-lg-12">
+                <div class="alert alert-danger" data-ng-show="form.name.$error.required && form.$submitted">Name is a required field.
+                </div>
+                <div class="alert alert-danger" data-ng-show="form.amount.$error.pattern && form.$submitted">Amount
+                    is invalid.
+                </div>
+                <div class="alert alert-danger" data-ng-show="form.amount.$error.server && form.$submitted">Amount
+                    is not accepted. Must be between {{ product.minAmount }} and {{ product.maxAmount}}.
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
