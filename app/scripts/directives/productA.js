@@ -3,7 +3,7 @@
 angular.module('ngDirectiveForms')
   .directive('productA', function ($timeout) {
     return {
-      templateUrl: 'app/views/productA.html',
+      templateUrl: 'app/views/directives/productA.html',
       restrict: 'A',
       scope: {
         registerFormScope: '=',
