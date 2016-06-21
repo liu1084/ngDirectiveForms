@@ -93,7 +93,7 @@ huaxiaModule.factory('MafService.formValidation.doSJC300001', function () {
 		"required": true,
 		"maxLength": 10,
 		"minLength": 4,
-		"pattern": /^[a-z1-9]+$/i
+		"pattern": /^[a-z]+.*$/i
 	};
 	return {
 		getColumns: columns
@@ -131,32 +131,30 @@ huaxiaModule.directive('formValidation', ['MafService.formValidation.doSJC300001
 						var target = $(evt.target);
 						scope.$apply(function(){
 							var value = $(target).val();
+							var name = $(target).attr('name');
+							var validationParams = columns[name];
 							var prompt = '';
-							for (param in columns[column]) {
+							for (param in validationParams) {
 								switch (param) {
+									case 'prompts':
+										result = true;
+										break;
 									case 'required':
 										if (!value) {
 											result = false;
-											prompt = columns[column]['prompts'][param];
+											prompt = validationParams['prompts']['required'];
 											break;
 										}
 									case 'maxLength':
-										if (value.length > columns[column][param]) {
+										if (value.length > validationParams['maxLength']) {
 											result = false;
-											prompt = columns[column]['prompts'][param];
+											prompt = validationParams['prompts']['maxLength'];
 											break;
 										}
-									case 'minLength':
-										if (value.length < columns[column][param]) {
-											result = false;
-											prompt = columns[column]['prompts'][param];
-											break;
-										}
-										break;
 									case 'pattern':
-										if (!columns[column][param].test(value)) {
+										if (!validationParams['pattern'].test(value)) {
 											result = false;
-											prompt = columns[column]['prompts'][param];
+											prompt = validationParams['prompts']['pattern'];
 											break;
 										}
 								}
