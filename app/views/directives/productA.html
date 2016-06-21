@@ -5,7 +5,7 @@
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input class="form-control" type="text" id="name" name="name" data-ng-model="giftData.name"
-                           maxlength="20" placeholder="Name" data-ng-required="true" data-ng-disabled="disabled"/>
+                           maxlength="20" placeholder="Name" data-ng-required="true" data-ng-disabled="disabled" ng-pattern="/^[a-z]+[0-9]/"/>
                 </div>
             </div>
             <div class="col-lg-1">
@@ -27,7 +27,8 @@
         </div>
         <div class="row" data-ng-show="form.$submitted">
             <div class="col-lg-12">
-                <div class="alert alert-danger" data-ng-show="form.name.$error.required && form.$submitted">Name is a required field.
+                <div class="alert alert-danger" data-ng-show="form.name.$error.required && form.$submitted">Name is a
+                    required field.
                 </div>
                 <div class="alert alert-danger" data-ng-show="form.amount.$error.pattern && form.$submitted">Amount
                     is invalid.

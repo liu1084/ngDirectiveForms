@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="huaxia">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="../../vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+    <link href="../../vendor/ngToast/dist/ngToast-animations.css" rel="stylesheet"/>
+    <link href="../../vendor/ngToast/dist/ngToast.css" rel="stylesheet"/>
+
+
+    <!-- Javascript start -->
+    <script src="../../vendor/jquery/dist/jquery.js"></script>
+    <script src="../../vendor/security/Barrett.js"></script>
+    <script src="../../vendor/security/BigInt.js"></script>
+    <script src="../../vendor/security/hmac-sha1.js"></script>
+    <script src="../../vendor/security/RSA.js"></script>
+    <script src="../../vendor/security/uuid.js"></script>
+
+
+    <!--common js-->
+    <script src="../app/services/common/DataCenter.js"></script>
+    <script src="../app/services/common/DataStore.js"></script>
+    <script src="../app/services/common/RowSet.js"></script>
+
+    <script src="../../vendor/maf/maf.bundle.js"></script>
+    <script src="../../vendor/ngToast/dist/ngToast.js"></script>
+    <script src="../../main.js"></script>
+
+    <script type="text/javascript" src="../app/services/common/MafService.js"></script>
+    <script type="text/javascript" src="../app/services/common/Action.js"></script>
+    <script type="text/javascript" src="../app/controllers/LoginCtrl.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <toast></toast>
+    <form class="form-horizontal" form-validation>
+        <div class="form-group">
+            <label for="username" class="col-sm-2 control-label">用户名</label>
+
+            <div class="col-sm-10">
+                <input type="email" class="form-control" id="username" placeholder="用户名" name="username">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="col-sm-2 control-label">密码</label>
+
+            <div class="col-sm-10">
+                <input type="password" class="form-control" id="password" placeholder="密码" name="password">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="security-code" class="col-sm-2 control-label">验证码</label>
+
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="security-code" name="verifycode">
+                <img src="../assets/img/a3ee35f1-eee3-43bb-8d8c-9345bdc713d0.png"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"> Remember me
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default" ng-click="loginAction();">Sign in</button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
