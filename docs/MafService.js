@@ -88,7 +88,7 @@ huaxiaModule.factory('MafService.formValidation.doSJC300001', function () {
 	columns.verifycode = {
 		"prompts": {
 			"required": "请输入验证码",
-			"pattern": "用户名必须以字母开始"
+			"pattern": "验证码只能包含数字和字母"
 		},
 		"required": true,
 		"maxLength": 10,
